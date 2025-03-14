@@ -7,104 +7,96 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  background-color: #b22222; /* Dark red background */
 }
 
-.container {
-  width: 100%;
+.grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: auto;
-  grid-gap: 0; /* Remove any gaps between grid items */
+  grid-template-rows: auto auto auto auto;
+  width: 100%;
+  min-height: 100vh;
 }
 
-/* Menu/Navigation Area */
-.menu-item {
-  padding: 15px 0;
-  text-align: center;
-  border: 1px solid #8b0000;
-  font-weight: bold;
-}
-
-.link1,
-.link2 {
-  background-color: #f8d022;
-  color: #333;
-  grid-column: span 2;
-}
-
-.link3,
-.link4 {
+/* Navigation row */
+.link-cell {
   background-color: #b22222;
   color: white;
-  grid-column: span 1;
+  text-align: center;
+  padding: 15px 0;
+  font-weight: bold;
+  border: 1px solid #8b0000;
 }
 
-.link1:hover,
-.link2:hover {
-  background-color: #ffdb4d;
-  cursor: pointer;
-}
-
-.link3:hover,
-.link4:hover {
+.link-cell:hover {
   background-color: #d32f2f;
   cursor: pointer;
 }
 
-/* Middle column content */
-.middle-content {
+/* Green center column */
+.green-column {
   grid-column: 3;
-  grid-row: span 4; /* Span all rows in the main content area */
-  background-color: #6acb4c;
-  color: white;
-  padding: 15px;
-  border: none;
+  grid-row: 1 / 5; /* Span all rows including footer */
+  background-color: #97c28a;
+  padding: 20px;
+  color: black;
+  font-size: 14px;
+  line-height: 1.5;
+  border: 1px solid #8b0000;
+  z-index: 1; /* Make sure it stays on top */
 }
 
-/* Image gallery items */
-.gallery-item {
+/* Profile cells */
+.profile-cell {
   background-color: #b22222;
-  padding: 15px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  padding: 15px;
+  gap: 15px;
   border: 1px solid #8b0000;
 }
 
-.image-container {
-  background-color: #333;
-  border-radius: 15px;
-  padding: 15px;
-  width: 85%;
-  color: white;
-  text-align: center;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.image-container img {
-  width: 60px;
-  height: 60px;
+/* Profile circular image */
+.profile-circle {
+  width: 120px;
+  height: 120px;
+  background-color: #444;
   border-radius: 50%;
-  background-color: #f0f0f0;
-  display: block;
-  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 16px;
 }
 
-.image-container:hover {
+.profile-circle:hover {
   border: 3px solid white;
+}
+
+/* Text below profile images */
+.profile-text {
+  background-color: #444;
+  color: white;
+  padding: 10px;
+  width: 85%;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 14px;
 }
 
 /* Footer */
 .footer {
-  grid-column: 1 / -1;
+  grid-column: 1 / 6; /* Span all 5 columns */
+  grid-row: 4; /* Position at the bottom (row 4) */
   background-color: #b22222;
   color: white;
   padding: 15px;
   text-align: justify;
+  border: 1px solid #8b0000;
+  font-size: 14px;
   position: relative;
-  border-top: 1px solid #8b0000;
+  z-index: 0; /* Behind the green column */
 }
 
 .footer:hover::after {
@@ -112,139 +104,14 @@ body {
   display: inline;
   font-weight: bold;
   margin-left: 5px;
-  color: white;
 }
 
-/* Gallery item layout */
-.row1-col1,
-.row1-col2 {
-  grid-column: span 2;
-  grid-row: 2;
-}
-
-.row1-col4,
-.row1-col5 {
-  grid-column: span 1;
-  grid-row: 2;
-}
-
-.row2-col1,
-.row2-col2 {
-  grid-column: span 1;
-  grid-row: 3;
-}
-
-.row2-col4,
-.row2-col5 {
-  grid-column: span 1;
-  grid-row: 3;
-}
-
-.row3-col1,
-.row3-col2 {
-  grid-column: span 2;
-  grid-row: 4;
-}
-
-.row3-col4,
-.row3-col5 {
-  grid-column: span 1;
-  grid-row: 4;
-}
-
-/* Fill entire width/height of grid cells */
-.gallery-item,
-.menu-item,
-.middle-content {
-  height: 100%;
-  width: 100%;
-}
-
+/* Fix for the green column to overlay the footer */
 .grid-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: auto auto auto auto;
-  height: 100vh;
-  background-color: #b22222; /* Dark red background */
-}
-
-/* Link cells */
-.link-cell {
-  background-color: #b22222; /* Darker red to match image */
-  padding: 10px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  border: 1px solid #8b0000;
-}
-
-/* Image cells */
-.image-cell {
-  background-color: #b22222; /* Darker red to match image */
-  padding: 10px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #8b0000;
-}
-
-/* Green box */
-.green-box {
-  grid-column: 3 / 4;
-  grid-row: 1 / 5; /* Span all rows */
-  background-color: #8fbc8f; /* Darker green to match image */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-  text-align: left;
-  border: 1px solid #8b0000;
-}
-
-/* Profile images */
-.profile-container {
   position: relative;
-  width: 120px;
-  height: 120px;
 }
 
-.profile-img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  background-color: #444;
-}
-
-.profile-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
-
-.profile-img:hover {
-  border: 3px solid white;
-}
-
-/* Text under images */
-.text-box {
-  background-color: #444;
-  color: white;
-  padding: 5px 10px;
-  margin-top: 10px;
-  border-radius: 5px;
-  font-size: 13px;
-}
-
-.options-button {
-  background-color: white;
-  border: 1px solid #ccc;
-  padding: 5px 10px;
-  margin: 20px auto;
-  display: block;
-  cursor: pointer;
+/* Ensure bottom row profile cells are in row 3 */
+.bottom-row {
+  grid-row: 3;
 }
