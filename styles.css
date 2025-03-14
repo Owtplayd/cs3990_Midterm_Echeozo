@@ -35,14 +35,13 @@ body {
 /* Green center column */
 .green-column {
   grid-column: 3;
-  grid-row: 1 / 5; /* Span all rows including footer */
-  background-color: #97c28a;
+  grid-row: 1 / 4; /* Span only rows 1-3, not including footer */
+  background-color: #6fcf52;
   padding: 20px;
   color: black;
   font-size: 14px;
   line-height: 1.5;
   border: 1px solid #8b0000;
-  z-index: 1; /* Make sure it stays on top */
 }
 
 /* Profile cells */
@@ -95,8 +94,6 @@ body {
   text-align: justify;
   border: 1px solid #8b0000;
   font-size: 14px;
-  position: relative;
-  z-index: 0; /* Behind the green column */
 }
 
 .footer:hover::after {
